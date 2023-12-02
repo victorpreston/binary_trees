@@ -1,19 +1,24 @@
 #include "binary_trees.h"
-
-
-
 /**
- * binary_tree_delete - delete binary_tree.
- * @tree: pointer.
+ * binary_tree_delete - free an entire tree using recursion it free the node
+ * when the node left and right are NULL
+ * @tree: tree to free
+ * Return: Nothing
  */
-
-
 void binary_tree_delete(binary_tree_t *tree)
 {
-	if (tree != NULL)
+	if (tree == NULL)
 	{
-		binary_tree_delete(tree->left);
-		binary_tree_delete(tree->right);
+		return;
+	}
+	else
+	{
+		if (tree != NULL)
+		{
+			binary_tree_delete(tree->left);
+			binary_tree_delete(tree->right);
+		}
 		free(tree);
 	}
+
 }
